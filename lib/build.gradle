@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'com.github.dcendents.android-maven'
 }
+
+group = 'com.github.brooklet'
 
 android {
     compileSdk 29
@@ -44,5 +47,38 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compileOnly project(':flutter')
+}
 
+//以下为配置library注释在打包jar后保留
+// 打包源码jar
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+// 打包文档jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+javadoc {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+    }
 }
