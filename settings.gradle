@@ -1,0 +1,16 @@
+//dependencyResolutionManagement {
+////    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        mavenCentral()
+//        google()
+//    }
+//}
+rootProject.name = "TarsFlutterAndroid"
+include ':example'
+include ':lib'
+
+setBinding(new Binding([gradle: this, mainModuleName: 'example']))                                // new
+evaluate(new File(                                                     // new
+        settingsDir,                                              // new
+        'flutter_example/.android/include_flutter.groovy'                         // new
+))

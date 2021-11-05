@@ -1,0 +1,3 @@
+[submodule "flutter_example"]
+	path = flutter_example
+	url = https://github.com/brooklet/TarsFlutterAddToAppExample.git
