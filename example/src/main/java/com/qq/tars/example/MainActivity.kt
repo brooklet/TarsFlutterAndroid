@@ -17,10 +17,6 @@ class MainActivity : BaseFlutterActivity() {
 
     var count = Random.Default.nextInt(10000)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun attach(channel: TarsMethodChannel) {
         val req = TestReq()
         req.id = count
@@ -28,6 +24,7 @@ class MainActivity : BaseFlutterActivity() {
         channel.invokeMethod("onCountChange", InvokeArgument1(req))
     }
 
+    // 注册可供flutter调用的方法
     override fun getMethodCallHandlers(): List<TarsMethodChannel.MethodHandler> {
         return mutableListOf(
             TarsMethodChannel.MethodHandler(
@@ -55,15 +52,18 @@ class MainActivity : BaseFlutterActivity() {
         )
     }
 
-
+    // 定义TarsMethodChannel的名称,需要与flutter中一致
     override fun getChannelName(): String {
         return "test"
     }
 
+    // 定义flutter中的页面的入口名称, 需要与flutter中一致,
+    // 如'testPage' 对应 flutter @pragma('vm:testPage')
     override fun getEntrypoint(): String {
         return "testPage"
     }
 
+    // 获得 FlutterEngineGroup
     override fun getFlutterEngineGroup(): FlutterEngineGroup {
         return MyApplication.getInstance().engines
     }

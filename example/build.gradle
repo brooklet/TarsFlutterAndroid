@@ -45,8 +45,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+//    implementation project(':lib')
     implementation project(':flutter')
-    implementation project(':lib')
-//    implementation 'com.github.brooklet:TarsFlutterAndroid:v1.0.0-beta.2'
+    implementation 'com.github.brooklet:TarsFlutterAndroid:v1.0.0-beta.3'
 
 }

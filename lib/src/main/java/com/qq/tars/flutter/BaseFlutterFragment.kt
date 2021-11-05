@@ -10,9 +10,17 @@ import java.util.*
 
 abstract class BaseFlutterFragment : FlutterFragment() {
 
-    abstract fun getMethodCallHandlers(): List<TarsMethodChannel.MethodHandler>;
+    // 注册可供flutter调用的TarsMethodChannel方法列表
+    abstract fun getMethodCallHandlers(): List<TarsMethodChannel.MethodHandler>
+
+    // 定义TarsMethodChannel的名称,需要与flutter中一致
     abstract fun getChannelName(): String
+
+    // 定义flutter中的页面的入口名称, 需要与flutter中一致,
+    // 如'testPage' 对应 flutter @pragma('vm:testPage')
     abstract fun getEntrypoint(): String
+
+    // 获得 FlutterEngineGroup
     abstract fun getFlutterEngineGroup(): FlutterEngineGroup
 
     open fun attach(channel: TarsMethodChannel) {

@@ -8,7 +8,6 @@ class MyApplication : Application() {
 
     companion object {
         private lateinit var sInstance: MyApplication
-
         fun getInstance(): MyApplication {
             return sInstance
         }
