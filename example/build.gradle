@@ -47,4 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation project(':flutter')
     implementation project(':lib')
+//    implementation 'com.github.brooklet:TarsFlutterAndroid:v1.0.0-beta.2'
+
 }

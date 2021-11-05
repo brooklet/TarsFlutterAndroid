@@ -6,11 +6,11 @@
 //    }
 //}
 rootProject.name = "TarsFlutterAndroid"
-include ':example'
+//include ':example'
 include ':lib'
 
-setBinding(new Binding([gradle: this, mainModuleName: 'example']))                                // new
-evaluate(new File(                                                     // new
-        settingsDir,                                              // new
-        'flutter_example/.android/include_flutter.groovy'                         // new
-))
+//setBinding(new Binding([gradle: this, mainModuleName: 'example']))                                // new
+//evaluate(new File(                                                     // new
+//        settingsDir,                                              // new
+//        'flutter_example/.android/include_flutter.groovy'                         // new
+//))
