@@ -22,7 +22,7 @@ dependencies {
 
 ```
 dependencies:
-  tars_flutter: ^0.0.8
+  tars_flutter: ^0.1.0
 
 ```
 
