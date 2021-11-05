@@ -120,7 +120,7 @@ dependencies:
 
     ```
 
-    3. 在 Flutter模块中创建 TarsMethodChannel 对象，并注册Android原生层可以调用的方法列表
+3. 在 Flutter模块中创建 TarsMethodChannel 对象，并注册Android原生层可以调用的方法列表
 
     ```
         late TarsMethodChannel _channel;
@@ -153,7 +153,7 @@ dependencies:
 
     ```
 
-    4. 在Android中调用Flutter方法的方式
+4. 在Android中调用Flutter方法的方式
 
     ```
         val req = TestReq()
@@ -163,7 +163,7 @@ dependencies:
 
     > 其中`TestReq`是Tars协议的结构体
 
-    5. 在Flutter中调用Android方法的方式
+5. 在Flutter中调用Android方法的方式
 
     ```
         Future<void> _incrementCounter() async {
@@ -188,18 +188,18 @@ dependencies:
 
 2. 相比MethodChannel的调用方式，TarsMethodChannel增加了`InvokeArgument` 和 `RegisterParameter`参数。
 
-3. `InvokeArgument`是调用方，用来封装多个调用参数，方便传输时封包，包括`InvokeArgument0`，`InvokeArgument1`，`InvokeArgument2`，`InvokeArgument3`四个子类，分别对应传输0..3个参数的情况。
+3. `InvokeArgument`是调用方用来封装多个调用参数，包括`InvokeArgument0`，`InvokeArgument1`，`InvokeArgument2`，`InvokeArgument3`四个子类，分别对应传输0..3个参数的情况。
 
-4. `RegisterParameter`是被调用方，用来注册多个被调用参数，方便传输时解包，包括`RegisterParameter0`，`RegisterParameter1`，`RegisterParameter2`，`RegisterParameter3`四个子类，分别对应传输0..3个参数的情况。
+4. `RegisterParameter`是被调用方用来注册多个被调用参数，包括`RegisterParameter0`，`RegisterParameter1`，`RegisterParameter2`，`RegisterParameter3`四个子类，分别对应传输0..3个参数的情况。
 
-5. 在Flutter中，`InvokeArgument` 及 `RegisterParameter` 的参数都必须是 **对象，而不是类**，在Android中`RegisterParameter` 的参数可以是类。
+5. **注意** 在Flutter中，`InvokeArgument` 及 `RegisterParameter` 的参数都必须是 **对象，而不是类**，在Android中`RegisterParameter` 的参数可以是类。
 
-6. 调用方的`InvokeArgument`必须和被调用方的`RegisterParameter`的类型匹配，比如`InvokeArgument2(TestReq(),"")`必须匹配被调用方注册的`RegisterParameter2(TestReq(),"")`
+6. 调用方的`InvokeArgument`必须和被调用方的`RegisterParameter`的类型及参数匹配，比如`InvokeArgument2(TestReq(),"")`必须匹配被调用方注册的`RegisterParameter2(TestReq(),"")`
 
 ---
 
 # 备注
 
-> 此框架仅支持Flutter 2.2.0及以上版本
+> 此框架仅支持AndroidX和Flutter 2.2.0及以上版本
 
-> 详细用法参考 example 
+> 详细用法参考 [example](./example)
